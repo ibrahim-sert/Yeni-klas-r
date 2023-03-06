@@ -4,22 +4,25 @@ import CardTotal from "../components/CardTotal";
 import axios from "axios";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-  const[loading,setLoading]=useState(true)
-  const url = process.env.REACT_APP_API_URL;
-  console.log("url",url);
-  const getProducts = async () => {
-    try {
-      const { data } = await axios(url);
-      setProducts(data);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getProducts();
-  }, []);
+const url= process.env.REACT_APP_API_URL  
+const [products, setProducts] = useState([])
+
+
+
+const getProducts =async()=>{
+  try {
+    
+    const {data}=await axios(url)
+    setProducts(data)
+  } catch (error) {
+    console.log(error);
+  }
+  
+}
+
+useEffect(() => {
+ getProducts()
+}, [])
 
   return (
     <div className="container mt-3">
