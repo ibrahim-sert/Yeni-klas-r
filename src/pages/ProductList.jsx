@@ -36,10 +36,14 @@ useEffect(() => {
           : products.length > 0 ?
         <>
           <article id="product-panel" className="col-md-5">
-            <ProductCard />
+            {products.map((item,id)=>{
+              return(
+                <ProductCard getProducts={getProducts} key={item.id} item={item}/>
+              )
+            }) }
           </article>
           <article className="col-md-5 m-3">
-            <CardTotal />
+            <CardTotal products={products}/>
           </article>
         </>
           :
